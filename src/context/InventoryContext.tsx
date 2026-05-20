@@ -189,14 +189,14 @@ export function InventoryProvider({ children }: { children: ReactNode }) {
           } as any;
           productData.push(decryptedProduct as Product);
         } catch (e) {
-          // Decryption failed - likely wrong key in local storage
-          localStorage.removeItem('MASTER_KEY');
-          setLocalKey(null);
+          // 🛡️ SAFE RECOVERY: Log it, but do NOT wipe out your MASTER_KEY state!
+          console.warn(`Product decryption skipped for doc ID ${doc.id}:`, e);
         }
       });
       setProducts(productData);
       setIsLoading(false);
     }, (error) => {
+      console.error("Products subscription error:", error);
       setIsLoading(false);
     });
 
@@ -235,10 +235,13 @@ export function InventoryProvider({ children }: { children: ReactNode }) {
           } as any;
           auditData.push(decryptedEntry as AuditEntry);
         } catch (e) {
-          // skip failing entries or handle key error
+          // 🛡️ SAFE RECOVERY: Skip single broken item logs without breaking the snapshot line
+          console.warn(`Audit log decryption skipped for entry ID ${doc.id}:`, e);
         }
       });
       setAuditLog(auditData);
+    }, (error) => {
+      console.error("Audit logs subscription error:", error);
     });
 
     return () => unsubscribe();
