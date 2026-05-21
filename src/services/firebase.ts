@@ -13,8 +13,8 @@ const firebaseConfig = {
   authDomain: "naijainventorypro.firebaseapp.com",
   projectId: "naijainventorypro",
   storageBucket: "naijainventorypro.firebasestorage.app",
-  messagingSenderId: "55361497269",
-  appId: "1:55361497269:web:80dc1c1d448cdbf22776fc"
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
