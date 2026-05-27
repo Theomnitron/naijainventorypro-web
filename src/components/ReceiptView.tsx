@@ -38,7 +38,7 @@ export default function ReceiptView({ entry, profile }: { entry: AuditEntry; pro
         text-anchor="middle"
         style="opacity: 0.05"
       >
-        ${BRAND_NAME.toUpperCase()}
+        ${STORE_NAME.toUpperCase()}
       </text>
     </svg>
   `;
