@@ -73,7 +73,7 @@ export default function SignUpScreen({ onSwitchToLogin }: SignUpScreenProps) {
         businessPhone: '',
         adminPin: '0000', // Default PIN
         createdAt: serverTimestamp(),
-        accessExpiresAt: Date.now() + (3 * 24 * 60 * 60 * 1000), // 3 Days trial
+        accessExpiresAt: Date.now() + (7 * 24 * 60 * 60 * 1000), // 7 Days trial
         welcomed: false,
         voidState: {
           isLocked: false,

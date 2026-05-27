@@ -78,7 +78,7 @@ export const generateReceipt = (entry: AuditEntry, profile: UserProfile) => {
   doc.setFont('helvetica', 'italic');
   doc.text('Thank you for your business!', pageWidth / 2, y, { align: 'center' });
   y += 5;
-  doc.text('Powered by TM Solutions', pageWidth / 2, y, { align: 'center' });
+  doc.text('Powered by Naija Inventory', pageWidth / 2, y, { align: 'center' });
 
   // Watermark if voided
   if (entry.isVoided) {
